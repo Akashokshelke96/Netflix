@@ -20,7 +20,7 @@ public class Validator {
 
     public void validateProfile(final String profileId,final String userId){
         ProfileDTO profileDTO = profileAccessor.getProfileByProfileId(profileId);
-        if(profileDTO != null && profileDTO.getUserId().equals(userId)){
+        if(profileDTO == null || !profileDTO.getUserId().equals(userId)){
             throw new InvalidProfileException("Profile " + profileId + " is invalid or does not exist!");
         }
 
