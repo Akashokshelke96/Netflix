@@ -24,6 +24,7 @@ public class WatchHistoryController {
     @Secured({Roles.Customer})
     public ResponseEntity<Void> updateWatchHistory(@PathVariable("videoId") String videoId,
                                                    @RequestBody WatchHistoryInput watchHistoryInput){
+        System.out.println("video id " + videoId);
         try{
             String profileId = watchHistoryInput.getProfileId();
             int watchTime = watchHistoryInput.getWatchTime();
@@ -43,6 +44,7 @@ public class WatchHistoryController {
     public ResponseEntity<Integer> getWatchHistory(@PathVariable("videoId") String videoId,
                                                    @RequestBody GetWatchHistoryInput input) {
         String profileId = input.getProfileId();
+        System.out.println("video id " + videoId);
         try {
             int watchLength = watchHistoryService.getWatchHistory(profileId, videoId);
             return ResponseEntity.status(HttpStatus.OK).body(watchLength);
